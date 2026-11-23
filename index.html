@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f8fc"><title>ALBAROKAH CELL | Katalog HP</title>
+<style>
+:root{--ink:#14243a;--blue:#1269dc;--blue2:#0c3e87;--mist:#eef4fb;--line:#e1e9f3;--muted:#6b7a90;--white:#fff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#f7faff,#edf3fb)}
+body{min-height:100vh}.app{max-width:520px;min-height:100vh;margin:auto;background:#f8fbff;position:relative;overflow:hidden;box-shadow:0 12px 50px #193b6810}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:11px}.logo{font-size:32px;font-weight:900;letter-spacing:-3px;color:var(--blue);font-style:italic}.brandname{font-size:16px;font-weight:850;letter-spacing:-.5px}.brandline{font-size:10px;color:var(--muted);margin-top:2px}.menu{border:0;background:none;color:var(--ink);font-size:23px}
+.page{display:none;padding:10px 20px 28px;min-height:calc(100vh - 76px)}.page.active{display:block}
+h1{font-size:30px;letter-spacing:-1.3px;margin:18px 0 5px;font-weight:850}.intro{color:var(--muted);font-size:14px;margin-bottom:25px}
+.range-list{display:flex;flex-direction:column;gap:10px}.range{border:1px solid var(--line);background:white;box-shadow:0 5px 14px #173c6710;border-radius:17px;padding:16px 18px;font-weight:780;font-size:18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:.2s}.range:active{transform:scale(.985)}.range.selected{background:linear-gradient(110deg,#1678ec,#0b438f);color:white;border-color:transparent}.arrow{font-weight:400;font-size:22px}
+#catalog{padding:0 0 20px;overflow:hidden}.price-head{padding:20px 24px 15px;background:linear-gradient(125deg,#126bdb,#073c82);color:white;border-radius:0 0 26px 26px;margin:0 14px 12px}.price-head small{opacity:.75}.price-head strong{display:block;font-size:23px;margin-top:4px;letter-spacing:-.5px}
+.swipehint{text-align:center;font-size:11px;color:var(--muted);margin:3px 0 14px}
+.unit{display:none;padding:0 18px}.unit.active{display:block}.product-photo{height:clamp(300px,48vh,440px);border-radius:25px;position:relative;overflow:hidden;background:linear-gradient(135deg,#d8e8f8,#f6f9fc);display:flex;align-items:center;justify-content:center;margin:0 0 13px}
+.photo-placeholder{position:relative;width:44%;height:74%;border-radius:28px;background:linear-gradient(150deg,#aec4dc,#597eae 65%,#3f6390);box-shadow:15px 25px 40px #193a6630;transform:rotate(-8deg);border:1px solid #ffffff55}
+.photo-placeholder:before{content:"";position:absolute;left:12%;top:8%;width:32%;height:23%;border-radius:18px;background:#234d7e;box-shadow:inset 0 0 0 3px #7896b9}
+.photo-placeholder:after{content:"";position:absolute;left:17%;top:12%;width:17%;height:17%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#a8c2df,#101b30 70%);box-shadow:0 0 0 3px #344d70,0 40px 0 1px #253d60,0 40px 0 4px #7896b9}
+.photo-label{position:absolute;bottom:18px;left:18px;background:#ffffffcc;backdrop-filter:blur(8px);padding:8px 12px;border-radius:12px;font-size:11px;color:#30445e}
+.dots{display:flex;gap:8px;position:absolute;bottom:18px;right:20px}.dot{width:8px;height:8px;border-radius:99px;background:#8da6c1;border:0;padding:0}.dot.active{background:var(--blue);width:20px}
+.unit-info{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:4px 2px 16px}.name{font-size:19px;font-weight:830;letter-spacing:-.5px}.sub{font-size:12px;color:var(--muted);margin-top:5px}.condition{color:var(--blue);font-weight:750}.price{font-size:20px;font-weight:850;letter-spacing:-.6px;white-space:nowrap}
+.pager{display:flex;align-items:center;justify-content:space-between;padding:12px 6px;color:var(--muted);font-size:12px}.pager button{border:0;background:#e9f2fc;color:#174e92;border-radius:50%;width:42px;height:42px;font-size:20px}
+.detail-gallery{display:grid;grid-template-columns:1.55fr .75fr;gap:8px;margin:8px 0 16px;height:220px}.detail-main,.detail-side{border-radius:20px;background:linear-gradient(145deg,#dceafa,#b9d0eb);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.detail-main .photo-placeholder{height:78%;width:42%}.detail-side{flex-direction:column;gap:8px;background:none}.detail-side>div{width:100%;flex:1;border-radius:15px;background:linear-gradient(145deg,#dceafa,#c6d9ee);display:flex;align-items:center;justify-content:center;overflow:hidden}.detail-side .photo-placeholder{width:34%;height:75%;transform:rotate(8deg)}
+.detail-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.detail-title{font-size:22px;font-weight:850;letter-spacing:-.8px}.detail-sub{font-size:13px;color:var(--muted);margin-top:5px}.detail-price{font-size:23px;font-weight:850;color:var(--blue2);margin-top:12px}
+.colors{margin:18px 0;border-top:1px solid var(--line);padding-top:14px;font-size:14px}.colors b{display:block;margin-bottom:6px}
+.section{padding:15px 16px;border-radius:20px;margin:12px 0}.plus{background:#e9f3ff}.minus{background:#f0f3f7}.section h3{font-size:16px;margin:0 0 10px;letter-spacing:-.3px}.section ul{padding:0 0 0 18px;margin:0;font-size:13px;line-height:1.9}.plus li::marker{color:var(--blue)}.minus li::marker{color:#8090a6}
+.completeness{font-size:13px;color:var(--muted);margin:14px 0}
+.whatsapp{width:100%;border:0;cursor:pointer;margin:17px 0 10px;color:white;background:linear-gradient(105deg,#0877ed,#073b84);border-radius:16px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 22px #0e5dbb25;clip-path:polygon(5% 0,100% 0,100% 80%,94% 100%,0 100%,0 20%);font-size:16px;font-weight:800;letter-spacing:.2px}.wa-icon{font-size:23px}.wa-arrow{font-size:23px}
+.back{border:0;background:#e9f2fc;border-radius:12px;padding:10px 13px;color:#194d88;font-weight:700;margin-bottom:10px}
+.footer-note{text-align:center;color:#93a1b5;font-size:10px;padding:16px 0}
+@media(min-width:520px){body{padding:20px}.app{border-radius:32px;min-height:calc(100vh - 40px)}header{padding:18px 25px}.page{min-height:calc(100vh - 116px)}}
+</style>
+</head>
+<body><div class="app">
+<header><div class="brand"><div class="logo">A</div><div><div class="brandname">ALBAROKAH CELL</div><div class="brandline">Pusat HP Baru &amp; Second</div></div></div><button class="menu" aria-label="Menu">☰</button></header>
+<section class="page active" id="home"><h1>Katalog HP</h1><div class="intro">Pilih rentang harga sesuai budget Anda.</div><div class="range-list" id="ranges"></div><div class="footer-note">ALBAROKAH CELL</div></section>
+<section class="page" id="catalog"><div class="price-head"><small>Kelas Harga</small><strong id="rangeTitle"></strong></div><div class="swipehint">Geser untuk melihat unit lainnya</div><div id="units"></div><div class="footer-note">Geser ke kiri atau kanan untuk berpindah unit</div></section>
+<section class="page" id="detail"><button class="back" onclick="showCatalog()">← Kembali ke katalog</button><div class="detail-gallery"><div class="detail-main"><div class="photo-placeholder"></div></div><div class="detail-side"><div><div class="photo-placeholder"></div></div><div><div class="photo-placeholder"></div></div></div></div><div class="detail-top"><div><div class="detail-title" id="detailName"></div><div class="detail-sub" id="detailSub"></div></div></div><div class="detail-price" id="detailPrice"></div><div class="colors"><b>Colors</b><span id="detailColors"></span></div><div id="completeness" class="completeness"></div><section class="section plus"><h3>Nilai plus</h3><ul id="plusList"></ul></section><section class="section minus"><h3>Belum optimal</h3><ul id="minusList"></ul></section><button class="whatsapp" id="wa"><span class="wa-icon">◉</span><span>Tanya Unit Ini</span><span class="wa-arrow">↗</span></button><div class="footer-note">ALBAROKAH CELL</div></section>
+</div>
+<script>
+const ranges=["1.000–1.500","1.600–2.000","2.100–2.500","2.600–3.000","3.100–3.500","3.600–4.000","4.100–4.500","4.600–5.000","5.100–5.500","5.600–6.000","6.100–6.500","6.600–7.000","7.100–7.500","7.600–8.000","8.100–8.500"];
+const sample=[
+ {name:"Redmi A7 Pro",ram:"4/128 GB",condition:"NEW",price:"1.899.000",colors:"Blue, Black",plus:["Smooth performance","Large display","Long battery life","Fast charging"],minus:["No NFC","Basic camera performance"]},
+ {name:"POCO C71",ram:"4/128 GB",condition:"NEW",price:"1.799.000",colors:"Green, Black",plus:["Responsive daily use","Large display","Reliable battery","Simple interface"],minus:["No NFC","Basic camera performance"]},
+ {name:"realme Note 80",ram:"4/64 GB",condition:"NEW",price:"1.649.000",colors:"Black, Gold",plus:["Comfortable design","Good battery life","Easy to use","Clear display"],minus:["Limited storage","Basic camera performance"]},
+ {name:"vivo Y19s",ram:"4/128 GB",condition:"SECOND",price:"1.700.000",colors:"Silver, Blue",completeness:"HP + dus + kabel",plus:["Smooth daily use","Comfortable display","Good battery life","Clean design"],minus:["No NFC","Basic camera performance"]}
+];
+let rangeIndex=0,unitIndex=0,activePhoto=0;
+const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));$(id).classList.add("active")}
+function renderRanges(){ $("ranges").innerHTML=ranges.map((r,i)=>`<button class="range" onclick="openRange(${i})"><span>${r}</span><span class="arrow">›</span></button>`).join("")}
+function openRange(i){rangeIndex=i;unitIndex=0;$("rangeTitle").textContent=ranges[i];renderUnits();show("catalog")}
+function renderUnits(){let data=sample; $("units").innerHTML=data.map((u,i)=>`<div class="unit ${i===unitIndex?"active":""}" data-i="${i}"><div class="product-photo" onclick="openDetail(${i})"><div class="photo-placeholder"></div><div class="photo-label">Foto ${activePhoto+1} · ${u.name}</div><div class="dots">${[0,1,2].map(n=>`<button class="dot ${n===activePhoto?"active":""}" aria-label="Foto ${n+1}" onclick="event.stopPropagation();setPhoto(${n},${i})"></button>`).join("")}</div></div><div class="unit-info"><div><div class="name">${u.name}</div><div class="sub">${u.ram} · <span class="condition">${u.condition}</span></div></div><div class="price">${u.price}</div></div><div class="pager"><button onclick="move(-1)" aria-label="Unit sebelumnya">‹</button><span>${i+1} / ${data.length} · Ketuk foto untuk detail</span><button onclick="move(1)" aria-label="Unit berikutnya">›</button></div></div>`).join("");}
+function setPhoto(n,i){activePhoto=n;renderUnits()}
+function move(d){unitIndex=(unitIndex+d+sample.length)%sample.length;activePhoto=0;renderUnits()}
+function openDetail(i){unitIndex=i;let u=sample[i];$("detailName").textContent=u.name;$("detailSub").textContent=u.ram+" · "+u.condition;$("detailPrice").textContent=u.price;$("detailColors").textContent=u.colors;$("completeness").textContent=u.condition==="SECOND"?(u.completeness||"Kelengkapan akan diisi"):"";$("completeness").style.display=u.condition==="SECOND"?"block":"none";$("plusList").innerHTML=u.plus.map(x=>`<li>${x}</li>`).join("");$("minusList").innerHTML=u.minus.map(x=>`<li>${x}</li>`).join("");$("wa").onclick=()=>{const text=encodeURIComponent("Halo ALBAROKAH CELL, saya ingin bertanya tentang "+u.name+" ("+u.ram+"), harga "+u.price+".");window.open("https://wa.me/?text="+text,"_blank")};show("detail")}
+function showCatalog(){renderUnits();show("catalog")}
+renderRanges();renderUnits();
+let startX=0;const catalog=$("catalog");catalog.addEventListener("touchstart",e=>startX=e.changedTouches[0].screenX,{passive:true});catalog.addEventListener("touchend",e=>{const dx=e.changedTouches[0].screenX-startX;if(Math.abs(dx)>65&&$("catalog").classList.contains("active"))move(dx<0?1:-1)},{passive:true});
+</script></body></html>
