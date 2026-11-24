@@ -1,18 +1,285 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#e5007d"><title>ALBAROKAH CELL</title><style>
-:root{--p:#e5007d;--p2:#ff3295;--ink:#25232b;--muted:#74727b;--line:#eee8ee;--soft:#fff2f8}*{box-sizing:border-box}body{margin:0;background:#f5f3f6;color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-weight:450}.app{max-width:480px;min-height:100dvh;margin:auto;background:#fff;box-shadow:0 0 40px #0001}button{font:inherit;cursor:pointer}header{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #f2edf2;position:sticky;top:0;background:white;z-index:5}.brand{font-size:16px;font-weight:750;letter-spacing:.4px}.iconbtn{border:0;background:none;color:var(--ink);font-size:23px;padding:6px}.page{display:none;padding:20px 18px 30px;min-height:calc(100dvh - 62px)}.page.active{display:block}.logo{height:135px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}.logo img{max-width:175px;max-height:130px;object-fit:contain}.fallback{display:none;border:2px solid var(--p);border-radius:50%;width:115px;height:115px;align-items:center;justify-content:center;text-align:center;color:var(--p);font-size:12px;font-weight:750}.tagline{text-align:center;font-size:19px;font-weight:650;margin:12px 0 22px}.prices{display:flex;flex-direction:column;gap:11px}.priceitem{min-height:66px;width:100%;border:1px solid #f1b5d3;border-radius:17px;background:white;color:var(--ink);font-size:17px;font-weight:650;text-align:center;display:flex;align-items:center;justify-content:center;transition:.15s}.priceitem:active,.priceitem:hover{border-color:var(--p);background:var(--soft)}.unitphotos{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:1fr 1fr;gap:9px;height:min(58vh,450px);min-height:330px;margin-bottom:16px}.photo{position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(145deg,#f7d8e9,#d9d4f1 48%,#f5f2f6);display:flex;align-items:center;justify-content:center}.photo.big{grid-row:1/3}.photo img{width:100%;height:100%;object-fit:cover;display:none}.photo img.loaded{display:block}.phoneart{height:72%;width:44%;border-radius:27px;background:linear-gradient(145deg,#c8bafa,#907fe6);box-shadow:0 14px 26px #42357c40;border:3px solid #ffffffa0;position:relative}.phoneart:before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:23px;height:23px;background:#292438;border-radius:50%}.caption{position:absolute;bottom:8px;left:8px;font-size:10px;color:#5b5267;background:#ffffffa8;padding:4px 7px;border-radius:8px}.model{font-size:21px;font-weight:720;margin:0 0 5px}.ram{font-size:15px;color:var(--muted);font-weight:600}.productprice{font-size:19px;font-weight:700;color:var(--p);margin:10px 0 4px}.condition{font-size:12px;color:var(--muted);font-weight:650;letter-spacing:.4px}.nav{display:flex;align-items:center;justify-content:space-between;margin:18px 0}.nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:white;font-size:22px;color:var(--p)}.counter{font-size:14px;color:var(--muted);font-weight:600}.gallery{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:115px 115px 88px;gap:8px;margin-bottom:16px}.gallery .g1{grid-row:1/3}.gallery .g4{grid-column:1/3}.gallery .photo{min-height:0}.detailtitle{font-size:21px;font-weight:720;margin:14px 0 6px}.meta{font-size:14px;color:var(--muted);font-weight:550;display:flex;gap:12px;flex-wrap:wrap}.detailprice{font-size:20px;color:var(--p);font-weight:700;margin:10px 0 5px}.section{border-top:1px solid var(--line);padding:13px 0}.sectitle{font-size:14px;font-weight:700;margin-bottom:7px;color:var(--p)}.bodytext{font-size:14px;line-height:1.55;color:#333}ul{margin:4px 0;padding-left:19px}.whatsapp{display:flex;align-items:center;justify-content:center;width:100%;border:0;border-radius:16px;background:linear-gradient(110deg,var(--p),var(--p2));color:white;font-size:16px;font-weight:700;padding:16px;margin:18px 0 5px;box-shadow:0 8px 18px #e5007d30}.back{color:var(--p)}
-</style></head><body><div class="app"><header><button class="iconbtn back" id="back" style="display:none">‹</button><div class="brand" id="brand">ALBAROKAH CELL</div><button class="iconbtn" id="menu">☰</button></header><main>
-<section class="page active" id="home"><div class="logo"><img src="logo.png" alt="Logo ALBAROKAH CELL" onerror="this.style.display='none';document.querySelector('.fallback').style.display='flex'"><div class="fallback">LOGO<br>ALBAROKAH<br>CELL</div></div><div class="tagline">Temukan HP pilihan Anda.</div><div class="prices" id="prices"></div></section>
-<section class="page" id="units"><div class="unitphotos" id="unitphotos"></div><h1 class="model" id="model"></h1><div class="ram" id="ram"></div><div class="productprice" id="price"></div><div class="condition" id="condition"></div><div class="nav"><button id="prev">‹</button><span class="counter" id="counter"></span><button id="next">›</button></div></section>
-<section class="page" id="detail"><div class="gallery" id="gallery"></div><h1 class="detailtitle" id="dmodel"></h1><div class="meta"><span id="dram"></span><span id="dcondition"></span></div><div class="detailprice" id="dprice"></div><div class="section"><div class="sectitle">Colors</div><div class="bodytext" id="colors"></div></div><div class="section" id="completenessSection"><div class="sectitle">Kelengkapan</div><div class="bodytext" id="completeness"></div></div><div class="section"><div class="sectitle">Nilai plus</div><div class="bodytext"><ul id="plus"></ul></div></div><div class="section" id="optimalSection"><div class="sectitle">Belum optimal</div><div class="bodytext"><ul id="optimal"></ul></div></div><button class="whatsapp" id="wa">◉ &nbsp; Tanya Unit Ini</button></section></main></div>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#e5007d">
+<title>ALBAROKAH CELL | Katalog HP</title>
+<style>
+:root{
+  --pink:#e5007d; --hot:#ff168f; --rose:#ff65b0; --blush:#ffd0e7;
+  --ink:#25212a; --muted:#77717b; --line:#f0d3e2; --paper:#fff;
+  --soft:#fff0f7; --shadow:0 14px 32px rgba(173,0,91,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f1f5;color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-weight:450}
+button{font:inherit;cursor:pointer}
+.app{width:min(100%,500px);min-height:100dvh;margin:auto;background:var(--paper);overflow:hidden;position:relative;box-shadow:0 0 40px #00000012}
+.top-accent{height:7px;background:linear-gradient(90deg,var(--pink),var(--hot),#ff8bc3,var(--pink))}
+header{height:66px;padding:0 19px;display:flex;align-items:center;justify-content:space-between;background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid #f5e4ed}
+.brand{font-size:16px;font-weight:750;letter-spacing:.35px}
+.header-left{display:flex;align-items:center;gap:9px}
+.icon-btn{border:0;background:transparent;color:var(--pink);font-size:25px;line-height:1;padding:7px}
+#backBtn{display:none}
+.menu-btn{font-size:22px;color:var(--ink)}
+.page{display:none;min-height:calc(100dvh - 73px);padding:18px 18px 34px;position:relative}
+.page.active{display:block}
+.page::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--pink),var(--rose),transparent 85%);opacity:.75}
+.home-hero{position:relative;padding:16px 10px 20px;text-align:center;overflow:hidden;border-radius:0 0 28px 28px;background:radial-gradient(ellipse at 8% 0%,#ffd0e7 0,transparent 43%),radial-gradient(ellipse at 100% 25%,#ffb4d8 0,transparent 38%),linear-gradient(145deg,#fff 15%,#fff2f8 100%)}
+.home-hero:after{content:"";position:absolute;left:-12%;right:-12%;bottom:-34px;height:65px;border-radius:50% 50% 0 0;background:linear-gradient(90deg,var(--pink),var(--hot),#ff9ac9);transform:rotate(-2deg)}
+.logo-wrap{height:116px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.logo-wrap img{max-width:158px;max-height:112px;object-fit:contain}
+.logo-fallback{width:104px;height:104px;border:3px solid var(--pink);border-radius:50%;display:none;align-items:center;justify-content:center;text-align:center;color:var(--pink);font-weight:750;font-size:12px;line-height:1.25;background:#fff}
+.tagline{position:relative;z-index:1;margin:9px 0 6px;font-size:19px;line-height:1.35;font-weight:650;letter-spacing:-.25px}
+.tagline span{color:var(--pink)}
+.home-sub{position:relative;z-index:1;color:#8b4c70;font-size:12px;margin:0 0 8px}
+.price-list{display:flex;flex-direction:column;gap:12px;padding:20px 1px 12px}
+.price-item{width:100%;min-height:65px;border:1px solid #f2a4cb;border-radius:17px;background:linear-gradient(105deg,#fff 0%,#fff8fc 55%,#fff0f7 100%);color:var(--ink);font-size:17px;font-weight:650;letter-spacing:.15px;text-align:center;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(229,0,125,.075);transition:transform .18s,border-color .18s,background .18s}
+.price-item:active{transform:scale(.985);background:#ffe4f1;border-color:var(--pink)}
+.price-item:focus-visible{outline:3px solid #ff9ac9;outline-offset:2px}
+.footer-note{text-align:center;color:#9a8b94;font-size:11px;padding:12px 0 4px}
+.page-heading{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--pink);font-weight:750;margin:3px 0 12px}
+.coverflow-shell{height:clamp(320px,57vh,475px);position:relative;perspective:1100px;overflow:visible;margin:8px -18px 10px;touch-action:pan-y}
+.coverflow-track{height:100%;position:relative;transform-style:preserve-3d}
+.product-card{position:absolute;top:3%;left:50%;width:min(68%,310px);height:94%;transform:translateX(-50%);border-radius:24px;background:linear-gradient(145deg,#ffe3f1,#f2d7ea 52%,#dcd2f4);box-shadow:0 20px 38px rgba(73,32,67,.22);overflow:hidden;transition:transform .48s cubic-bezier(.2,.75,.25,1),opacity .48s,filter .48s;transform-style:preserve-3d;border:1px solid #ffffffb8}
+.product-card.active{z-index:5;transform:translateX(-50%) translateZ(65px) scale(1);opacity:1;filter:none;cursor:pointer}
+.product-card.prev{z-index:3;transform:translateX(-118%) translateZ(-100px) rotateY(24deg) scale(.82);opacity:.78;filter:saturate(.8);cursor:pointer}
+.product-card.next{z-index:3;transform:translateX(18%) translateZ(-100px) rotateY(-24deg) scale(.82);opacity:.82;filter:saturate(.85);cursor:pointer}
+.product-card.hidden-left{z-index:1;transform:translateX(-155%) translateZ(-180px) rotateY(30deg) scale(.68);opacity:0;pointer-events:none}
+.product-card.hidden-right{z-index:1;transform:translateX(55%) translateZ(-180px) rotateY(-30deg) scale(.68);opacity:0;pointer-events:none}
+.card-photo{height:70%;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(circle at 50% 35%,#fff 0,#ead9ef 45%,#d9c8e2 100%)}
+.card-photo img{width:100%;height:100%;object-fit:cover;display:none}
+.card-photo img.loaded{display:block}
+.phone-placeholder{height:76%;width:43%;border-radius:27px;background:linear-gradient(145deg,#d4c5ff,#8770e5);border:4px solid #ffffffa8;box-shadow:0 20px 28px #4d397b45;position:relative}
+.phone-placeholder:before{content:"";position:absolute;top:9px;left:10px;width:31px;height:31px;border-radius:50%;background:#17151e;box-shadow:0 0 0 4px #a99af0,0 42px 0 -1px #17151e,0 42px 0 3px #a99af0}
+.card-caption{height:30%;padding:12px 14px;background:linear-gradient(135deg,#fff,#fff0f7);text-align:left}
+.card-name{font-size:16px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-price{font-size:16px;font-weight:750;color:var(--pink);margin-top:5px}
+.card-condition{font-size:11px;color:#766b75;font-weight:700;margin-top:3px;letter-spacing:.5px}
+.coverflow-hint{text-align:center;font-size:11px;color:#8b7b86;margin:2px 0 18px}
+.unit-details{padding:10px 4px 4px;border-top:1px solid var(--line)}
+.unit-model{font-size:21px;line-height:1.25;font-weight:750;letter-spacing:-.35px;margin:0 0 6px}
+.unit-ram{font-size:15px;color:var(--muted);font-weight:600}
+.unit-price{font-size:20px;color:var(--pink);font-weight:750;margin:9px 0 3px}
+.unit-condition{font-size:12px;color:#716b74;font-weight:700;letter-spacing:.5px}
+.counter-dots{display:flex;justify-content:center;align-items:center;gap:7px;margin:13px 0 0}
+.counter-dots span{width:7px;height:7px;border-radius:50%;background:#e7c4d7}
+.counter-dots span.active{width:22px;border-radius:8px;background:var(--pink)}
+/* detail page */
+.detail-gallery{display:grid;grid-template-columns:1.28fr 1fr;grid-template-rows:clamp(104px,19vw,145px) clamp(104px,19vw,145px) clamp(70px,14vw,100px);gap:8px;margin:7px 0 18px}
+.gallery-tile{border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(145deg,#f7d8e9,#e5d8f2);display:flex;align-items:center;justify-content:center}
+.gallery-tile.main{grid-row:1/3}
+.gallery-tile.wide{grid-column:1/3}
+.gallery-tile img{width:100%;height:100%;object-fit:cover;display:none}
+.gallery-tile img.loaded{display:block}
+.gallery-tile .phone-placeholder{height:72%;width:38%}
+.gallery-dots{display:flex;justify-content:center;gap:7px;margin:-7px 0 14px}
+.gallery-dots span{width:7px;height:7px;border-radius:50%;background:#e7c4d7}
+.gallery-dots span.active{width:20px;border-radius:8px;background:var(--pink)}
+.detail-model{font-size:21px;font-weight:750;line-height:1.25;margin:0 0 7px;letter-spacing:-.3px}
+.detail-meta{display:flex;gap:12px;flex-wrap:wrap;color:#706a74;font-size:14px;font-weight:600}
+.detail-price{font-size:20px;color:var(--pink);font-weight:750;margin:9px 0 11px}
+.info-section{border-top:1px solid #f0d8e4;padding:13px 2px 12px;display:grid;grid-template-columns:112px 1fr;gap:10px}
+.info-title{font-size:14px;font-weight:750;color:var(--pink)}
+.info-content{font-size:14px;line-height:1.5;color:#353039}
+.info-content ul{margin:0;padding-left:18px}
+.whatsapp{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;border:0;border-radius:17px;background:linear-gradient(105deg,#d90073,#ff168f 55%,#ff65b0);color:white;font-size:16px;font-weight:750;padding:16px;margin:18px 0 6px;box-shadow:0 10px 24px rgba(229,0,125,.28)}
+.whatsapp:active{transform:scale(.99)}
+.gallery-full{position:fixed;inset:0;background:#160d16ed;z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
+.gallery-full.open{display:flex}
+.gallery-full img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:14px}
+.gallery-full button{position:absolute;top:18px;right:18px;background:#ffffff20;border:1px solid #ffffff70;color:#fff;border-radius:50%;width:42px;height:42px;font-size:24px}
+@media(min-width:501px){.app{min-height:900px}.page{min-height:827px}}
+@media(max-width:360px){.page{padding-left:14px;padding-right:14px}.info-section{grid-template-columns:94px 1fr}.product-card{width:72%}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top-accent"></div>
+  <header>
+    <div class="header-left">
+      <button class="icon-btn" id="backBtn" aria-label="Kembali">‹</button>
+      <div class="brand" id="brandText" style="display:none">ALBAROKAH CELL</div>
+    </div>
+    <div class="brand" id="homeBrand" style="display:none">ALBAROKAH CELL</div>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </header>
+
+  <main>
+    <section class="page active" id="homePage">
+      <div class="home-hero">
+        <div class="logo-wrap">
+          <img src="logo.png" alt="Logo ALBAROKAH CELL" onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+          <div class="logo-fallback" id="logoFallback">ALBAROKAH<br>CELL</div>
+        </div>
+        <p class="tagline">Temukan HP <span>pilihan Anda.</span></p>
+        <p class="home-sub">Pilih rentang harga yang sesuai</p>
+      </div>
+      <div class="price-list" id="priceList"></div>
+      <div class="footer-note">ALBAROKAH CELL · Temukan pilihan Anda</div>
+    </section>
+
+    <section class="page" id="unitsPage">
+      <div class="page-heading">Pilihan unit</div>
+      <div class="coverflow-shell" id="coverflowShell">
+        <div class="coverflow-track" id="coverflowTrack"></div>
+      </div>
+      <div class="coverflow-hint">Geser ke kiri atau kanan untuk melihat unit lainnya</div>
+      <div class="unit-details">
+        <h1 class="unit-model" id="unitModel"></h1>
+        <div class="unit-ram" id="unitRam"></div>
+        <div class="unit-price" id="unitPrice"></div>
+        <div class="unit-condition" id="unitCondition"></div>
+      </div>
+      <div class="counter-dots" id="unitDots"></div>
+    </section>
+
+    <section class="page" id="detailPage">
+      <div class="page-heading">Detail unit</div>
+      <div class="detail-gallery" id="detailGallery"></div>
+      <div class="gallery-dots" id="galleryDots"></div>
+      <h1 class="detail-model" id="detailModel"></h1>
+      <div class="detail-meta"><span id="detailRam"></span><span id="detailCondition"></span></div>
+      <div class="detail-price" id="detailPrice"></div>
+      <div class="info-section"><div class="info-title">Colors</div><div class="info-content" id="detailColors"></div></div>
+      <div class="info-section" id="completenessSection"><div class="info-title">Kelengkapan</div><div class="info-content" id="detailCompleteness"></div></div>
+      <div class="info-section"><div class="info-title">Nilai plus</div><div class="info-content"><ul id="detailPlus"></ul></div></div>
+      <div class="info-section" id="optimalSection"><div class="info-title">Belum optimal</div><div class="info-content"><ul id="detailOptimal"></ul></div></div>
+      <button class="whatsapp" id="whatsappBtn"><span style="font-size:20px">◉</span> Tanya Unit Ini</button>
+    </section>
+  </main>
+</div>
+
+<div class="gallery-full" id="galleryFull"><button id="closeGallery" aria-label="Tutup">×</button><img id="fullImage" alt="Foto produk"></div>
+
 <script>
-// EDIT/TAMBAHKAN DATA HP DI SINI. Masukkan URL foto asli pada photos (maksimal 4).
-// completeness ditampilkan hanya untuk kondisi 2ND.
-const ranges=["1.000–1.500","1.600–2.000","2.100–2.500","2.600–3.000","3.100–3.500","3.600–4.000","4.100–4.500","4.600–5.000","5.100–5.500","5.600–6.000","6.100–6.500","6.600–7.000","7.100–7.500","7.600–8.000","8.100–8.500"];
-const products=[{range:0,model:"Contoh Model HP",ram:"4/64 GB",price:"1.499.000",condition:"NEW",colors:"Purple · Black · Blue",completeness:"",plus:["Large battery","Smooth daily performance"],optimal:["No NFC"],photos:[]},{range:0,model:"Contoh Unit 2ND",ram:"6/128 GB",price:"1.450.000",condition:"2ND",colors:"Black · Blue",completeness:"HP · Dus · Kabel · SIM ejector",plus:["Good everyday performance","Comfortable display"],optimal:["Minor cosmetic signs"],photos:[]}];let range=0,index=0;const pageids=["home","units","detail"];
-function page(name){pageids.forEach(x=>document.getElementById(x).classList.toggle("active",x===name));document.getElementById("back").style.display=name==="home"?"none":"block";document.getElementById("menu").style.display=name==="home"?"none":"block";if(name==="units")renderUnit();if(name==="detail")renderDetail()}
-function renderPrices(){ranges.forEach((r,i)=>{let b=document.createElement("button");b.className="priceitem";b.textContent=r;b.onclick=()=>{range=i;index=0;page("units")};document.getElementById("prices").appendChild(b)})}
-function tile(url,cls=""){return `<div class="photo ${cls}">${url?`<img src="${url}" onload="this.classList.add('loaded')" onerror="this.remove()">`:`<div class="phoneart"></div>`}</div>`}function list(){return products.filter(x=>x.range===range)}function current(){return list()[index]}
-function renderUnit(){let a=list();if(!a.length){document.getElementById("unitphotos").innerHTML=tile()+tile()+tile();document.getElementById("model").textContent="Belum ada unit di rentang ini";["ram","price","condition"].forEach(x=>document.getElementById(x).textContent="");document.getElementById("counter").textContent="0 / 0";return}index=Math.max(0,Math.min(index,a.length-1));let p=current();document.getElementById("unitphotos").innerHTML=tile(p.photos[0],"big")+tile(p.photos[1])+tile(p.photos[2]);document.getElementById("model").textContent=p.model;document.getElementById("ram").textContent=p.ram;document.getElementById("price").textContent=p.price;document.getElementById("condition").textContent=p.condition;document.getElementById("counter").textContent=`${index+1} / ${a.length}`}
-function renderDetail(){let p=current();if(!p)return;document.getElementById("gallery").innerHTML=tile(p.photos[0],"g1")+tile(p.photos[1])+tile(p.photos[2])+tile(p.photos[3],"g4");document.getElementById("dmodel").textContent=p.model;document.getElementById("dram").textContent=p.ram;document.getElementById("dcondition").textContent=p.condition;document.getElementById("dprice").textContent=p.price;document.getElementById("colors").textContent=p.colors||"—";document.getElementById("completenessSection").style.display=p.condition==="2ND"?"block":"none";document.getElementById("completeness").textContent=p.completeness||"—";document.getElementById("plus").innerHTML=(p.plus||[]).map(x=>`<li>${x}</li>`).join("");document.getElementById("optimalSection").style.display=(p.optimal||[]).length?"block":"none";document.getElementById("optimal").innerHTML=(p.optimal||[]).map(x=>`<li>${x}</li>`).join("")}
-document.getElementById("prev").onclick=()=>{let a=list();if(a.length){index=(index-1+a.length)%a.length;renderUnit()}};document.getElementById("next").onclick=()=>{let a=list();if(a.length){index=(index+1)%a.length;renderUnit()}};document.getElementById("unitphotos").onclick=()=>page("detail");document.getElementById("back").onclick=()=>page(document.getElementById("detail").classList.contains("active")?"units":"home");document.getElementById("menu").onclick=()=>page("home");document.getElementById("wa").onclick=()=>{let p=current();let msg=encodeURIComponent(`Halo, saya tertarik dengan ${p.model} (${p.ram}, ${p.condition}) seharga ${p.price}. Apakah unitnya masih tersedia?`);window.open("https://wa.me/?text="+msg,"_blank")};renderPrices();
-</script></body></html>
+/* PANDUAN DATA:
+   - Ubah contoh produk di bawah dengan data HP toko.
+   - range adalah nomor indeks rentang harga, dimulai dari 0.
+   - photos berisi maksimal 4 URL foto asli produk.
+   - Kelengkapan hanya tampil otomatis untuk kondisi "2ND".
+   - Logo halaman 1: unggah file logo asli dengan nama logo.png di repository GitHub.
+*/
+const priceRanges=[
+ "1.000–1.500","1.600–2.000","2.100–2.500","2.600–3.000","3.100–3.500",
+ "3.600–4.000","4.100–4.500","4.600–5.000","5.100–5.500","5.600–6.000",
+ "6.100–6.500","6.600–7.000","7.100–7.500","7.600–8.000","8.100–8.500"
+];
+
+const products=[
+ {range:0,model:"Contoh Model HP",ram:"4/64 GB",price:"1.499.000",condition:"NEW",colors:"Purple · Black · Blue",completeness:"",plus:["Large battery","Smooth daily performance"],optimal:["No NFC"],photos:[]},
+ {range:0,model:"Contoh Unit 2ND",ram:"6/128 GB",price:"1.450.000",condition:"2ND",colors:"Black · Blue",completeness:"HP · Dus · Kabel · SIM ejector",plus:["Good everyday performance","Comfortable display"],optimal:["Minor cosmetic signs"],photos:[]},
+ {range:1,model:"Contoh Model Berikutnya",ram:"8/128 GB",price:"1.899.000",condition:"NEW",colors:"Black · Blue",completeness:"",plus:["Responsive for daily use"],optimal:[],photos:[]}
+];
+
+let activeRange=0,activeIndex=0,detailPhotoIndex=0;
+const pageIds=["homePage","unitsPage","detailPage"];
+const getRangeProducts=()=>products.map((p,i)=>({...p,_sourceIndex:i})).filter(p=>Number(p.range)===activeRange);
+let rangeProducts=[];
+
+function showPage(id){
+ pageIds.forEach(x=>document.getElementById(x).classList.toggle("active",x===id));
+ const home=id==="homePage";
+ document.getElementById("backBtn").style.display=home?"none":"block";
+ document.getElementById("brandText").style.display=home?"none":"block";
+ document.getElementById("homeBrand").style.display=home?"block":"none";
+ document.getElementById("menuBtn").style.display=home?"block":"none";
+ if(id==="unitsPage")renderCoverflow();
+ if(id==="detailPage")renderDetail();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderPrices(){
+ const root=document.getElementById("priceList");
+ root.innerHTML="";
+ priceRanges.forEach((label,index)=>{
+  const b=document.createElement("button");
+  b.className="price-item";b.type="button";b.textContent=label;
+  b.addEventListener("click",()=>{activeRange=index;activeIndex=0;rangeProducts=getRangeProducts();showPage("unitsPage");});
+  root.appendChild(b);
+ });
+}
+function phonePlaceholder(){return '<div class="phone-placeholder"></div>'}
+function makePhoto(url,extra=""){
+ return `<div class="gallery-tile ${extra}">${url?`<img src="${escapeAttr(url)}" alt="Foto produk" onload="this.classList.add('loaded')" onerror="this.remove()">`:phonePlaceholder()}</div>`;
+}
+function escapeAttr(s){return String(s||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+function renderCoverflow(){
+ rangeProducts=getRangeProducts();
+ const track=document.getElementById("coverflowTrack");
+ track.innerHTML="";
+ if(!rangeProducts.length){
+  track.innerHTML='<div style="position:absolute;inset:40% 12px auto;text-align:center;color:#8b7b86">Belum ada unit pada rentang harga ini.</div>';
+  document.getElementById("unitModel").textContent="Belum ada unit";
+  document.getElementById("unitRam").textContent="";
+  document.getElementById("unitPrice").textContent="";
+  document.getElementById("unitCondition").textContent="";
+  document.getElementById("unitDots").innerHTML="";
+  return;
+ }
+ activeIndex=(activeIndex+rangeProducts.length)%rangeProducts.length;
+ rangeProducts.forEach((p,i)=>{
+  const card=document.createElement("div");
+  let state=i===activeIndex?"active":i===(activeIndex-1+rangeProducts.length)%rangeProducts.length?"prev":i===(activeIndex+1)%rangeProducts.length?"next":i<activeIndex?"hidden-left":"hidden-right";
+  card.className="product-card "+state;
+  const first=p.photos&&p.photos[0];
+  card.innerHTML=`<div class="card-photo">${first?`<img src="${escapeAttr(first)}" alt="${escapeAttr(p.model)}" onload="this.classList.add('loaded')" onerror="this.remove()">`:phonePlaceholder()}</div><div class="card-caption"><div class="card-name">${escapeHTML(p.model)}</div><div class="card-price">${escapeHTML(p.price)}</div><div class="card-condition">${escapeHTML(p.condition)}</div></div>`;
+  card.addEventListener("click",()=>{if(i!==activeIndex){activeIndex=i;renderCoverflow()}else showPage("detailPage")});
+  track.appendChild(card);
+ });
+ const p=rangeProducts[activeIndex];
+ document.getElementById("unitModel").textContent=p.model;
+ document.getElementById("unitRam").textContent=p.ram;
+ document.getElementById("unitPrice").textContent=p.price;
+ document.getElementById("unitCondition").textContent=p.condition;
+ document.getElementById("unitDots").innerHTML=rangeProducts.map((_,i)=>`<span class="${i===activeIndex?"active":""}"></span>`).join("");
+}
+function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function currentProduct(){return rangeProducts[activeIndex]}
+function renderDetail(){
+ const p=currentProduct();if(!p)return;
+ const photos=(p.photos||[]).slice(0,4);
+ document.getElementById("detailGallery").innerHTML=[0,1,2,3].map((n)=>makePhoto(photos[n],n===0?"main":n===3?"wide":"")).join("");
+ document.getElementById("galleryDots").innerHTML=photos.map((_,i)=>`<span class="${i===detailPhotoIndex?"active":""}"></span>`).join("");
+ document.getElementById("detailModel").textContent=p.model;
+ document.getElementById("detailRam").textContent=p.ram;
+ document.getElementById("detailCondition").textContent=p.condition;
+ document.getElementById("detailPrice").textContent=p.price;
+ document.getElementById("detailColors").textContent=p.colors||"—";
+ document.getElementById("completenessSection").style.display=p.condition==="2ND"?"grid":"none";
+ document.getElementById("detailCompleteness").textContent=p.completeness||"—";
+ document.getElementById("detailPlus").innerHTML=(p.plus||[]).map(x=>`<li>${escapeHTML(x)}</li>`).join("");
+ document.getElementById("optimalSection").style.display=(p.optimal||[]).length?"grid":"none";
+ document.getElementById("detailOptimal").innerHTML=(p.optimal||[]).map(x=>`<li>${escapeHTML(x)}</li>`).join("");
+ detailPhotoIndex=0;
+ document.querySelectorAll("#detailGallery img").forEach((img,i)=>img.addEventListener("click",()=>openFullImage(img.src)));
+}
+function openFullImage(src){const full=document.getElementById("galleryFull");document.getElementById("fullImage").src=src;full.classList.add("open")}
+document.getElementById("closeGallery").onclick=()=>document.getElementById("galleryFull").classList.remove("open");
+document.getElementById("galleryFull").onclick=e=>{if(e.target.id==="galleryFull")e.currentTarget.classList.remove("open")};
+
+let startX=0,startY=0;
+const shell=document.getElementById("coverflowShell");
+shell.addEventListener("touchstart",e=>{startX=e.changedTouches[0].clientX;startY=e.changedTouches[0].clientY},{passive:true});
+shell.addEventListener("touchend",e=>{
+ const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;
+ if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)){moveCoverflow(dx<0?1:-1)}
+},{passive:true});
+shell.addEventListener("mousedown",e=>{startX=e.clientX;});
+shell.addEventListener("mouseup",e=>{const dx=e.clientX-startX;if(Math.abs(dx)>55)moveCoverflow(dx<0?1:-1)});
+function moveCoverflow(direction){
+ if(!rangeProducts.length)return;
+ activeIndex=(activeIndex+direction+rangeProducts.length)%rangeProducts.length;
+ renderCoverflow();
+}
+document.getElementById("backBtn").onclick=()=>showPage(document.getElementById("detailPage").classList.contains("active")?"unitsPage":"homePage");
+document.getElementById("menuBtn").onclick=()=>showPage("homePage");
+document.getElementById("whatsappBtn").onclick=()=>{
+ const p=currentProduct();if(!p)return;
+ const message=encodeURIComponent(`Halo ALBAROKAH CELL, saya tertarik dengan ${p.model} (${p.ram}, ${p.condition}) dengan harga ${p.price}. Apakah unitnya masih tersedia?`);
+ window.open("https://wa.me/?text="+message,"_blank","noopener");
+};
+renderPrices();
+</script>
+</body>
+</html>
